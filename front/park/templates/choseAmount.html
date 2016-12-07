@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="step-box">
+        <div class="steps">
+            <div class="step-line">
+                <i class="ion-android-radio-button-on step step-one active"></i>
+                <i class="ion-record step step-two"></i>
+                <i class="ion-record step step-three"></i>
+            </div>
+            <div class="step-content">
+                <span class="step step-one active">选金额</span>
+                <span class="step step-two ">支付</span>
+                <span class="step step-three ">充值</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex-center">
+    <ul class="list">
+        <li class="item"><span class="option">卡类型</span> <span class="option-right">{{card.type}}</span> </li>
+        <li class="item"><span class="option">卡号</span><span class="option-right">{{card.id}}</span> </li>
+        <li class="item"><span class="option">余额</span><span class="option-right">{{card.balance}}元</span> </li>
+    </ul>
+</div>
+
+<div style="margin: 1rem">
+    <p class="text-fade-small">请选择充值金额</p>
+    <div class="flex-center">
+        <div class="button-small active">{{card.unit*1}}元</div>
+        <div class="button-small">{{card.unit*2}}元</div>
+        <div class="button-small">{{card.unit*4}}元</div>
+    </div>
+    <div class="flex-center">
+        <div class="button-small"><input class="def-amount" type="number" ng-model="amount">元</div>
+        <div class="button-small" style="border: none"></div>
+        <div class="button-small" style="border: none"></div>
+    </div>
+
+</div>
+
+<div class="button-big" ng-click="recharge(amount)">支付</div>

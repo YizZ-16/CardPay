@@ -1,0 +1,24 @@
+<div class="content">
+    <div class="pay-info-head">
+        <p class="text-bold">商品:{{card.location}}{{card.type}}</p>
+        <p class="text-bold">订单:{{card.orderNumber}}</p>
+        <p class="text-large right"> <i class="ion-social-yen ico-yen"></i>{{card.amount}}</p>
+    </div>
+    <div class="list">
+        <div class="item"><span class="option">优惠和代金卷</span> <i class="ion-chevron-right ico-next"></i></div>
+    </div>
+    <p class="text-small">请选择付款方式</p>
+    <div class="list">
+        <div class="item">
+            <div class="option">
+                <i class="ion-social-yen"></i>
+                <span>
+                <div class="text-middle">账户金额</div>
+                <div class="text-middle">可用{{}}元，可提现{{}}元</div>
+            </span>
+            </div>
+            <i class="ion-chevron-right ico-next"></i>
+        </div>
+    </div>
+    <div class="button-big" ng-click="recharge(card.amount)">下一步</div>
+</div>

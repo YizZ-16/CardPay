@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>车辆管理</title>
+    <link rel="stylesheet" type="text/css" href="../../static/css/fastPayPark.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/ionicons.min.css">
+</head>
+<body>
+<div ng-app="fastPayPark"  ng-controller="manage">
+    <div ng-if="content.headShow" ng-include="'./templates/head.html'"></div>
+    <div ng-if="content.manageShow"  ng-include="'./templates/manage.html'"></div>
+    <div ng-if="content.rechargeShow" ng-include="'./templates/recharge.html'"></div>
+    <div ng-if="content.choseAmountShow" ng-include="'./templates/choseAmount.html'"></div>
+<!-- 充值 -->
+     <div ng-if="content.headBlackShow" ng-include="'./templates/headBlack.html'"></div>
+     <div ng-if="content.payInfoShow" ng-include="'./templates/payInfo.html'"></div>
+     <div ng-if="content.paySuccessShow" ng-include="'./templates/paySuccess.html'"></div>
+
+<!-- 充值结果 -->
+     <div ng-if="content.rechargeSuccessShow" ng-include="'./templates/rechargeSuccess.html'"></div>
+     <div ng-if="content.dealHistoryShow" ng-include="'./templates/dealHistory.html'"></div>
+
+
+</div>
+</body>
+<script type="application/javascript" src="../../static/js/angular.min.js"></script>
+<script type="application/javascript" src="../../static/js/angular-route.min.js"></script>
+<script type="application/javascript" src="../../static/js/ionic.min.js"></script>
+<script type="application/javascript" src="../../static/js/fastPayPark.js"></script>
+<script>
+    var app = angular.module('fastPayPark',[]);
+    app.controller('manage', function ($scope) {
+        $scope.content = {
+            headShow:true,manageShow:true,rechargeShow:false,choseAmountShow:false,headBlackShow:false,
+            payInfoShow:false,paySuccessShow:false,rechargeSuccessShow:false,dealHistoryShow:false
+        }
+
+        $scope.card = {
+             type:"咪表卡",id: "1234556778",balanceBefore:100,balance : 100,unit:50,amount:50,
+             location:"广州",orderNumber: "123412431243124312431234",payWay:"余额支付"
+        };
+
+        $scope.optionStep = {
+            stepOne:"车辆管理",stepTwo:"实体停车卡充值",stepThree:"交易结果",stepFour:"收银台"
+        };
+
+        $scope.deals = [
+            { date:"2016年10月",amount :"50",status:"交易成功"},
+            { date:"2016年9月",amount :"50",status:"等待付款"},
+            { date:"2016年8月",amount :"50",status:"等待充值"},
+            { date:"2016年8月",amount :"50",status:"交易失败"}
+        ];
+        $scope.steps = $scope.optionStep.stepOne;
+        $scope.phone = "15312121121"
+        $scope.checkNFC = function () {
+            //doCheckNFc
+            var status = 1;
+            switch(status){
+                //无NFC
+                case 0:
+                    $scope.modalNote = "你的手机不支持NFC功能，无法使用实体停车卡充值功能应用";
+                    $scope.modalBtnLeftShow = false;
+                    $scope.modalBtnRightShow = true;
+                    $scope.modalBtnRight = "我知道了";
+                    break;
+                //手机不支持
+                case -1:
+                    $scope.modalNote = "暂不支持该机型";
+                    $scope.modalBtnLeftShow = false;
+                    $scope.modalBtnRightShow = true;
+                    $scope.modalBtnRight = "我知道了";
+                    break;
+                //开启NFC
+                case 1:
+                    $scope.modalNote = "使用实体停车卡充值功能需要开启手机NFC。是否现在手动开启？";
+                    $scope.modalBtnLeftShow = true;
+                    $scope.modalBtnRightShow = true;
+                    $scope.modalBtnLeft = "取消"
+                    $scope.modalBtnRight = "确定";
+                    $scope.NFCStatus = false;
+                    break;
+                //NFC 已开启
+                case 2:
+                    $scope.NFCStatus = true;
+                    break;
+                default :
+                    console.log("unknowState!");
+
+            }
+            $scope.steps = $scope.optionStep.stepTwo;
+            $scope.content.manageShow = false;
+            $scope.content.rechargeShow = true;
+            if (status) {
+
+            }
+            else {
+
+            }
+        };
+        $scope.goBack = function () {
+            window.history.back()
+        }
+        //开启NFC功能
+        $scope.openNFC = function () {
+            if ($scope.NFCStatus === false) {
+                //开启NFC
+            } else {
+                console.log("NFC is open!")
+            }
+        }
+        //充值操作
+        $scope.recharge = function (amount) {
+            $scope.steps = $scope.optionStep.stepThree;
+            alert(amount);
+        }
+        //充值成功，跳转到充卡页面
+        $scope.toRecharge = function () {
+            //跳转
+
+            //
+            $scope.steps = $scope.optionStep.stepFour;
+        }
+        //查看交易记录
+        $scope.showDealHistory = function () {
+            //跳转
+
+            $scope.steps = $scope.optionStep.stepFour;
+
+        }
+    });
+</script>
+</html>

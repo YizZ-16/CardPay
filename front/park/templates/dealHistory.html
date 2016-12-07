@@ -1,0 +1,15 @@
+<div class="list-deal">
+    <ul class="list" ng-repeat="deal in deals">
+        <li class="item-head">{{deal.date}}</li>
+        <li class="item">
+            <span class="option">
+                <span class="text-middle">充值</span>
+                <span class="text-middle">{{deal.date}}</span>
+            </span>
+            <span class="option-right">
+                <span class="text-small"><i class="ion-social-yen ico-yen-small"></i>{{deal.amount}}</span>
+                <span class="text-small">{{deal.status}}</span>
+            </span>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,45 @@
+<div class="wrapper">
+    <div class="step-box">
+        <div class="steps">
+            <div class="step-line">
+                <i class="ion-record step step-one"></i>
+                <i class="ion-record step step-two"></i>
+                <i class="ion-android-radio-button-on step step-three active"></i>
+            </div>
+            <div class="step-content">
+                <span class="step step-one active">选金额</span>
+                <span class="step step-two active">支付</span>
+                <span class="step step-three active">充值</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p class="flex-center text-bold">请再次贴卡充值</p>
+        <p class="flex-center text-bold">充值中不要移动卡片</p>
+    </div>
+    <div class="flex-center">
+        <img class="car-logo" src="/CarPay/static/images/serach.png">
+    </div>
+    <div class="">
+        <p class="text-fade">温馨提示:</p>
+        <p class="text-fade">如贴卡无反应，可移动卡片寻找NFC感应区</p>
+    </div>
+</div>
+<div class="modal">
+    <div class="modal-wrapper">
+        <div class="text-bold">提示</div>
+        <div class="text-middle">{{modalNote}}</div>
+        <div class="modal-button" ng-if="modalBtnLeftShow">{{modalBtnLeft}}</div>
+        <div class="modal-button" ng-if="modalBtnRightShow" ng-click="openNFC()">{{modalBtnRight}}</div>
+    </div>
+</div>
+<script id="note-modal-one.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar>
+            <h1 class="title">My Modal title</h1>
+        </ion-header-bar>
+        <ion-content>
+            Hello!
+        </ion-content>
+    </ion-modal-view>
+</script>

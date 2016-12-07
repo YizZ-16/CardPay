@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="text-center">
+        <div class="ion-ios-checkmark pay-success-ico"></div>
+        <div class="text-small">支付成功</div>
+        <div class="text-large">{{card.amount}}元</div>
+    </div>
+    <div class="list">
+        <p class="text-small">付款方式:{{card.payWay}}</p>
+        <p class="text-small">订单编号:{{card.orderNumber}}</p>
+    </div>
+    <div class="button-big" ng-click="toRecharge()">下一步</div>
+</div>
